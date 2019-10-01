@@ -9,7 +9,7 @@ class BootStrap {
         (1..5).each{
             userInstance.addToAnnonces(
                     new Annonce(
-                        title: "Title",
+                        title: "Title"+it,
                         description: "description",
                         validTill: new Date(),
                         state: Boolean.TRUE
