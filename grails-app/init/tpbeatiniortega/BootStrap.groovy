@@ -6,7 +6,7 @@ class BootStrap {
         def userInstance = new User(username: "username",
                 password: "password",
                 thumbnail: new Illustration(filename: "thumb.png")).save(flush: true, failOnError: true)
-        1..5.each{
+        (1..5).each{
             userInstance.addToAnnonces(
                     new Annonce(
                         title: "Title",
