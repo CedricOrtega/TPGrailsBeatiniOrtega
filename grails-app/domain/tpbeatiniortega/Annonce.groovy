@@ -18,4 +18,9 @@ class Annonce {
         validTill nullable: false
         illustrations nullable: true
     }
+    @Override
+    String toString(){
+        return title;
+    }
+
 }
