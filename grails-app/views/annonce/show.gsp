@@ -19,7 +19,50 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="annonce" />
+%{--            <f:display bean="annonce" />--}%
+            <ol class="property-list annonce">
+
+                <li class="fieldcontain">
+                    <span id="title-label" class="property-label">Title</span>
+                    <div class="property-value" aria-labelledby="title-label">${annonce.title}</div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="description-label" class="property-label">Description</span>
+                    <div class="property-value" aria-labelledby="description-label">${annonce.description}</div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="validTill-label" class="property-label">Valid Till</span>
+                    <div class="property-value" aria-labelledby="validTill-label">${annonce.validTill}</div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="illustrations-label" class="property-label">Illustrations</span>
+                    <div class="property-value" aria-labelledby="illustrations-label">
+                        <ul>
+                        <g:each in="${annonce.illustrations}" var="illustration">
+                            <li>
+                                <a href="/illustration/show/${illustration.id}">${illustration.filename}</a>
+                            </li>
+                        </g:each>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="state-label" class="property-label">State</span>
+                    <div class="property-value" aria-labelledby="state-label">${annonce.state}</div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="author-label" class="property-label">Author</span>
+                    <div class="property-value" aria-labelledby="author-label">
+                        <a href="/user/show/${annonce.author.id}">${annonce.author.username}</a>
+                    </div>
+                </li>
+
+            </ol>
             <g:form resource="${this.annonce}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.annonce}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
