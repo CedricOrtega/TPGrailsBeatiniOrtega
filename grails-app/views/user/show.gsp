@@ -16,10 +16,50 @@
         </div>
         <div id="show-user" class="content scaffold-show" role="main">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <f:display bean="user" />
+
+
+            <ol class="property-list user">
+
+                <li class="fieldcontain">
+                    <span id="username-label" class="property-label">Username</span>
+                    <div class="property-value" aria-labelledby="username-label">${user.username}</div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="password-label" class="property-label">Password</span>
+                    <div class="property-value" aria-labelledby="password-label">${user.password}</div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="thumbnail-label" class="property-label">Thumbnail</span>
+                    <div class="property-value" aria-labelledby="thumbnail-label"><a href="/illustration/show/${user.thumbnail.id}">${user.thumbnail.filename}</a></div>
+                </li>
+
+                <li class="fieldcontain">
+                    <span id="annonces-label" class="property-label">Annonces</span>
+                    <div class="property-value" aria-labelledby="annonces-label">
+                        <ul>
+                            <g:each in="${user.annonces}" var="annonce">
+                            <li><a href="/annonce/show/${annonce.id}">${annonce.title}</a></li>
+                            </g:each>
+                        </ul>
+                    </div>
+                </li>
+
+            </ol>
+
+
+
+
+
+
+        %{--
+                    <g:if test="${flash.message}">
+                    <div class="message" role="status">${flash.message}</div>
+                    </g:if>
+                    <f:display bean="user" />
+
+                    --}%
             <g:form resource="${this.user}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.user}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

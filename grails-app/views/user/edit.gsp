@@ -26,15 +26,45 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.user}" method="PUT">
-                <g:hiddenField name="version" value="${this.user?.version}" />
+%{--            <g:form resource="${this.user}" method="PUT">--}%
+
+            <form action="/user/update/${user.id}" method="post" ><input type="hidden" name="_method" value="PUT" id="_method" />
+                <input type="hidden" name="version" value="1" id="version" />
                 <fieldset class="form">
-                    <f:all bean="user"/>
+                    <div class='fieldcontain required'>
+                        <label for='username'>Username
+                            <span class='required-indicator'>*</span>
+                        </label><input type="text" name="username" value="${user.username}" required="" maxlength="20" id="username" />
+                    </div><div class='fieldcontain required'>
+                    <label for='password'>Password
+                        <span class='required-indicator'>*</span>
+                    </label><input type="password" name="password" required="" maxlength="30" value="" id="password" />
+                </div><div class='fieldcontain required'>
+                    <label for='thumbnail'>Thumbnail
+                        <span class='required-indicator'>*</span>
+                    </label>
+                    <input type="file" name="featuredImageFile" />
+                </div>
+                    <div class='fieldcontain'>
+                    <label for='annonces'>Annonces</label>
+                    <ul>
+                        <g:each in="${user.annonces}" var="annonce">
+                        <li>
+                            <a href="/annonce/show/${annonce.id}">${annonce.title}</a>
+                        </li>
+                        </g:each>
+                    </ul>
+                    <a href="/annonce/create?user.id=${user.id}">Add Annonce</a>
+                </div>
                 </fieldset>
+
+
+                <g:hiddenField name="version" value="${this.user?.version}" />
+
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
                 </fieldset>
-            </g:form>
-        </div>
-    </body>
+%{--    </g:form>--}%
+</div>
+</body>
 </html>
