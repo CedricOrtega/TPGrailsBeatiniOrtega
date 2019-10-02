@@ -28,7 +28,7 @@
             </g:hasErrors>
 %{--            <g:form resource="${this.user}" method="PUT">--}%
 
-            <form action="/user/update/${user.id}" method="post" ><input type="hidden" name="_method" value="PUT" id="_method" />
+            <form action="/user/update/${user.id}" method="post" enctype="multipart/form-data" ><input type="hidden" name="_method" value="PUT" id="_method" />
                 <input type="hidden" name="version" value="1" id="version" />
                 <fieldset class="form">
                     <div class='fieldcontain required'>

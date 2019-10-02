@@ -28,7 +28,7 @@
             </g:hasErrors>
 %{--            <g:form resource="${this.annonce}" method="PUT">--}%
                 <g:hiddenField name="version" value="${this.annonce?.version}" />
-            <form action="/annonce/update/${annonce.id}" method="post" ><input type="hidden" name="_method" value="PUT" id="_method" />
+            <form action="/annonce/update/${annonce.id}" method="post" enctype="multipart/form-data" ><input type="hidden" name="_method" value="PUT" id="_method" />
                 <input type="hidden" name="version" value="0" id="version" />
                 <fieldset class="form">
                     <div class='fieldcontain required'>
@@ -304,7 +304,8 @@
                             </li>
                         </g:each>
                         </ul>
-                        <a href="/illustration/create?annonce.id=1">Add Illustration</a>
+                        <label for='imageFile'>Ajouter une image:</label><input type="file" id="imageFile" name="featuredImageFile" />
+%{--                        <a href="/illustration/create?annonce.id=1">Add Illustration</a>--}%
                 </div>
                     <div class='fieldcontain'>
                     <label for='state'>State</label><input type="hidden" name="_state" /><input type="checkbox" name="state" checked="checked" id="state"  />

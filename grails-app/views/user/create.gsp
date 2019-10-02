@@ -25,8 +25,8 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-%{--            <g:form resource="${this.user}" method="POST">--}%
-            <form action="/user/save" method="post" >
+%{--            <g:uploadForm resource="${this.user}" method="POST">--}%
+            <form action="/user/save" method="post" enctype="multipart/form-data">
                 <fieldset class="form">
                     <div class='fieldcontain required'>
                         <label for='username'>Username

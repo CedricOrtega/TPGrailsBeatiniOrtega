@@ -26,7 +26,7 @@
             </ul>
             </g:hasErrors>
 %{--            <g:form resource="${this.annonce}" method="POST">--}%
-            <form action="/annonce/save" method="post" >
+            <form action="/annonce/save" method="post" enctype="multipart/form-data" >
                 <fieldset class="form">
                     <div class='fieldcontain required'>
                         <label for='title'>Title
