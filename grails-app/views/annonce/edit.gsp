@@ -300,7 +300,7 @@
                         <ul>
                         <g:each in="${annonce.illustrations}" var="illustration">
                             <li>
-                                <a href="/illustration/show/${illustration.id}">${illustration.filename}</a>
+                                <img src="${illustration.filename}"/>
                             </li>
                         </g:each>
                         </ul>

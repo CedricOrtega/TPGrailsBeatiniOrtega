@@ -40,7 +40,7 @@
                     <label for='thumbnail'>Thumbnail
                         <span class='required-indicator'>*</span>
                     </label>
-                    <input type="file" name="featuredImageFile" />
+                    <input type="file" name="thumbnail" />
                 </div>
                     <div class='fieldcontain'>
                     <label for='annonces'>Annonces</label><ul></ul><a href="/annonce/create?user.id=">Add Annonce</a>

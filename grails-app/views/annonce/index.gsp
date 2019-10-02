@@ -40,7 +40,7 @@
     <td>
         <ul>
             <g:each in="${instance.illustrations}" var="illustration">
-                <li><g:link controller="illustration" action="show" id="${illustration.id}">${illustration.filename}</g:link></li>
+                <li><img src="${illustration.filename}"/></li>
             </g:each>
         </ul>
     </td>
