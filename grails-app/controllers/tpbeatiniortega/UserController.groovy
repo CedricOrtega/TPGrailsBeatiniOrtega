@@ -2,6 +2,9 @@ package tpbeatiniortega
 
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
+import java.awt.image.BufferedImage
+import java.io.File
+import java.io.FileInputStream
 
 class UserController {
 
@@ -23,14 +26,39 @@ class UserController {
     }
 
     def save(User user) {
+
+        /*
+        System.out.println("test stp");
+        def userInstance = new User(username: params.username,
+                                    password: params.password,
+                                    thumbnail: new Illustration(filename: params.thumbnail.filename)).save(flush: true, failOnError: true)
+
+         */
         if (user == null) {
             notFound()
             return
         }
 
+        def file = request.getFile("thumbnail_file")
+        System.out.println(file)
+        // Generer un nom de fihier aleatoire et verifier qu'il n'existe pas déjà
+        // sauvegarde le fichier sur le disque en utilisant le path renseigne sur le fichier de config
+
+        file.transferTo(new File(grailsApplication.config.maconfig.assets_path+params.thumbnail_file.filename))
+
+
+
+//        System.out.println(grailsApplication.config.maconfig.assets_path+params.thumbnail.filename)
+
+        String strFile = params.thumbnail_file.filename
+        // Garder une trace sur le nom du fichier
+        user.thumbnail = new Illustration(filename: strFile.toString())
+
+
         try {
             userService.save(user)
         } catch (ValidationException e) {
+            println e
             respond user.errors, view:'create'
             return
         }

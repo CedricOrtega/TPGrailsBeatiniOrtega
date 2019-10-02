@@ -138,3 +138,7 @@ environments:
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 server:
     port: 8091
+
+maconfig:
+    assets_path: "C:/Users/Cédric/IdeaProjects/TPBeatiniOrtega/grails-app/assets/images/"
+    assets_url: "http://localhost:8091/assets/"

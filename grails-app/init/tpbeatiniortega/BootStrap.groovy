@@ -5,7 +5,7 @@ class BootStrap {
     def init = { servletContext ->
         def userInstance = new User(username: "username",
                 password: "password",
-                thumbnail: new Illustration(filename: "/assets/image.png")).save(flush: true, failOnError: true)
+                thumbnail: new Illustration(filename: "image.png")).save(flush: true, failOnError: true)
         (1..5).each{
             userInstance.addToAnnonces(
                     new Annonce(

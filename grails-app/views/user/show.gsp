@@ -32,7 +32,7 @@
 
                 <li class="fieldcontain">
                     <span id="thumbnail-label" class="property-label">Thumbnail</span>
-                    <div class="property-value" aria-labelledby="thumbnail-label"><img src="${user.thumbnail.filename}"/></div>
+                    <div class="property-value" aria-labelledby="thumbnail-label"><img src="http://localhost:8091/assets/${user.thumbnail.filename}"/></div>
                 </li>
 
                 <li class="fieldcontain">

@@ -31,7 +31,7 @@
                 <g:each in="${userList}" var="instance">
                     <tr>
                         <td><g:link controller="user" action="show" id="${instance.id}">${instance.username}</g:link></td>
-                        <td><img src="${instance.thumbnail.filename}"/></td>
+                        <td><img src="http://localhost:8091/assets/${instance.thumbnail.filename}"/></td>
                         <td>
                             <ul>
                                 <g:each in="${instance.annonces}" var="annonce">

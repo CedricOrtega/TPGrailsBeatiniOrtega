@@ -37,10 +37,10 @@
                         <span class='required-indicator'>*</span>
                     </label><input type="password" name="password" required="" maxlength="30" value="" id="password" />
                 </div><div class='fieldcontain required'>
-                    <label for='thumbnail'>Thumbnail
+                    <label for='thumbnail_file'>Thumbnail
                         <span class='required-indicator'>*</span>
                     </label>
-                    <input type="file" name="thumbnail" />
+                    <input type="file" name="thumbnail_file" />
                 </div>
                     <div class='fieldcontain'>
                     <label for='annonces'>Annonces</label><ul></ul><a href="/annonce/create?user.id=">Add Annonce</a>
