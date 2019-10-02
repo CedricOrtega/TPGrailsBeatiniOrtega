@@ -25,14 +25,31 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.user}" method="POST">
+%{--            <g:form resource="${this.user}" method="POST">--}%
+            <form action="/user/save" method="post" >
                 <fieldset class="form">
-                    <f:all bean="user"/>
+                    <div class='fieldcontain required'>
+                        <label for='username'>Username
+                            <span class='required-indicator'>*</span>
+                        </label><input type="text" name="username" value="" required="" maxlength="20" id="username" />
+                    </div><div class='fieldcontain required'>
+                    <label for='password'>Password
+                        <span class='required-indicator'>*</span>
+                    </label><input type="password" name="password" required="" maxlength="30" value="" id="password" />
+                </div><div class='fieldcontain required'>
+                    <label for='thumbnail'>Thumbnail
+                        <span class='required-indicator'>*</span>
+                    </label>
+                    <input type="file" name="featuredImageFile" />
+                </div>
+                    <div class='fieldcontain'>
+                    <label for='annonces'>Annonces</label><ul></ul><a href="/annonce/create?user.id=">Add Annonce</a>
+                </div>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
-            </g:form>
+%{--            </g:form>--}%
         </div>
     </body>
 </html>
