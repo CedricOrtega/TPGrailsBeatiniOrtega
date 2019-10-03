@@ -23,10 +23,19 @@ class AnnonceController {
     }
 
     def save(Annonce annonce) {
+        println params
         if (annonce == null) {
             notFound()
             return
         }
+
+        def file = request.getFile("featuredImageFile")
+        System.out.println(file)
+
+        file.transferTo(new File(grailsApplication.config.maconfig.assets_path+params.featuredImageFile.filename))
+
+        String strFile = params.featuredImageFile.filename
+        annonce.addToIllustrations(new Illustration(filename: strFile.toString()))
 
         try {
             annonceService.save(annonce)
