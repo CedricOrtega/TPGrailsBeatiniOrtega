@@ -43,7 +43,7 @@
                         <ul>
                         <g:each in="${annonce.illustrations}" var="illustration">
                             <li>
-                                <img src="${illustration.filename}"/>
+                                <img src="http://localhost:8091/assets/${illustration.filename}"/>
                             </li>
                         </g:each>
                         </ul>

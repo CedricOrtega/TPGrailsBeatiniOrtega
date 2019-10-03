@@ -18,6 +18,10 @@ class Annonce {
         validTill nullable: false
         illustrations nullable: true
     }
+    static mapping = {
+        illustrations lazy: false
+    }
+
     @Override
     String toString(){
         return title;

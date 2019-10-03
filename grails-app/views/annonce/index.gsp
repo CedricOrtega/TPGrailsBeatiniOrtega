@@ -40,7 +40,7 @@
     <td>
         <ul>
             <g:each in="${instance.illustrations}" var="illustration">
-                <li><img src="${illustration.filename}"/></li>
+                <li><img src="http://localhost:8091/assets/${illustration.filename}"$/></li>
             </g:each>
         </ul>
     </td>

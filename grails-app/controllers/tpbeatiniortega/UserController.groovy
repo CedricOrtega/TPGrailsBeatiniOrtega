@@ -2,9 +2,6 @@ package tpbeatiniortega
 
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
-import java.awt.image.BufferedImage
-import java.io.File
-import java.io.FileInputStream
 
 class UserController {
 
