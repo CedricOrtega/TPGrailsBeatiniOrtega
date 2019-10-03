@@ -42,6 +42,17 @@ class ApiController {
 
                 break
             case "PATCH":
+                if (!request.JSON.id)
+                    return response.status = 400
+                def annonceInstance = Annonce.get(request.JSON.id)
+                annonceInstance.properties = request.JSON
+                if (!annonceInstance)
+                    return response.status = 404
+                annonceInstance = annonceInstance.save flush:true
+                response.withFormat {
+                    json { render annonceInstance as JSON}
+                    xml { render annonceInstance as XML }
+                }
                 break
             case "DELETE":
                 println("Delete API")
