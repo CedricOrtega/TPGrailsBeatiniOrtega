@@ -35,8 +35,8 @@ class AnnonceController {
         file.transferTo(new File(grailsApplication.config.maconfig.assets_path+params.featuredImageFile.filename))
 
         String strFile = params.featuredImageFile.filename
-        annonce.addToIllustrations(new Illustration(filename: strFile.toString()))
-
+        //annonce.addToIllustrations(new Illustration(filename: strFile.toString()))
+        annonce.addToIllustrations(new Illustration(filename: strFile))
         try {
             annonceService.save(annonce)
         } catch (ValidationException e) {
@@ -58,11 +58,20 @@ class AnnonceController {
     }
 
     def update(Annonce annonce) {
-        println params 
+        println params
         if (annonce == null) {
             notFound()
             return
         }
+
+        def file = request.getFile("featuredImageFile")
+        System.out.println(file)
+
+        file.transferTo(new File(grailsApplication.config.maconfig.assets_path+params.featuredImageFile.filename))
+
+        String strFile = params.featuredImageFile.filename
+        //annonce.addToIllustrations(new Illustration(filename: strFile.toString()))
+        annonce.addToIllustrations(new Illustration(filename: strFile))
 
         try {
             annonceService.save(annonce)
@@ -112,8 +121,6 @@ class AnnonceController {
 
     def deleteIllustration()
     {
-        println("Yeeeeeeeeeeeeeeeeeeeeesss2222")
-        println(params)
 
         def illustrationId = params.id
         def annonceId = params.annonceId
@@ -124,7 +131,9 @@ class AnnonceController {
         println(annonceInstance)
         annonceInstance.removeFromIllustrations(illustrationInstance)
         annonceInstance.save(flush: true)
-        // Il faut effacer le fichier physique
+        // effacer le fichier physique
         illustrationInstance.delete(flush: true)
+        redirect(controller: "annonce",action: "edit", id: annonceInstance.id)
+
     }
 }

@@ -36,8 +36,8 @@ class UserController {
 
         String strFile = params.thumbnail_file.filename
 
-        user.thumbnail = new Illustration(filename: strFile.toString())
-
+        //user.thumbnail = new Illustration(filename: strFile.toString())
+        user.thumbnail = new Illustration(filename: strFile)
         try {
             userService.save(user)
         } catch (ValidationException e) {
@@ -64,6 +64,16 @@ class UserController {
             notFound()
             return
         }
+
+        def file = request.getFile("thumbnail_file")
+        System.out.println(file)
+
+        file.transferTo(new File(grailsApplication.config.maconfig.assets_path+params.thumbnail_file.filename))
+
+        String strFile = params.thumbnail_file.filename
+
+        //user.thumbnail = new Illustration(filename: strFile.toString())
+        user.thumbnail = new Illustration(filename: strFile)
 
         try {
             userService.save(user)

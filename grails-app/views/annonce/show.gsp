@@ -46,7 +46,6 @@
                                 <img src="http://localhost:8091/assets/${illustration.filename}"/>
                             </li>
                             <form action="/annonce/deleteIllustration/${illustration.id}" method="post" >
-                                <input type="hidden" name="_method" value="DELETE" id="_method" />
                                 <input type="hidden" name="annonceId" value="${annonce.id}" id="annonceId" />
                                 <fieldset class="buttons">
                                     <input class="delete" type="submit" value="Delete" onclick="return confirm('Are you sure?');" />

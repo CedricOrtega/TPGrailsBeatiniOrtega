@@ -38,12 +38,12 @@
                     </div><div class='fieldcontain required'>
                     <label for='password'>Password
                         <span class='required-indicator'>*</span>
-                    </label><input type="password" name="password" required="" maxlength="30" value="" id="password" />
+                    </label><input type="password" name="password" required="" maxlength="30" value="${user.password}" id="password" />
                 </div><div class='fieldcontain required'>
                     <label for='thumbnail'>Thumbnail
                         <span class='required-indicator'>*</span>
                     </label>
-                    <input type="file" name="thumbnail" />
+                    <input type="file" name="thumbnail_file" />
                 </div>
                     <div class='fieldcontain'>
                     <label for='annonces'>Annonces</label>
