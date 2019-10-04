@@ -58,6 +58,7 @@ class AnnonceController {
     }
 
     def update(Annonce annonce) {
+        println params 
         if (annonce == null) {
             notFound()
             return
@@ -66,7 +67,10 @@ class AnnonceController {
         try {
             annonceService.save(annonce)
         } catch (ValidationException e) {
-            respond annonce.errors, view:'edit'
+            println e
+            redirect view: '/index'
+            return
+            respond annonce.errors, view:'show'
             return
         }
 
@@ -108,10 +112,16 @@ class AnnonceController {
 
     def deleteIllustration()
     {
-        def illustrationId = params.illustrationId
+        println("Yeeeeeeeeeeeeeeeeeeeeesss2222")
+        println(params)
+
+        def illustrationId = params.id
         def annonceId = params.annonceId
+
         def annonceInstance = Annonce.get(annonceId)
         def illustrationInstance = Illustration.get(illustrationId)
+        println(illustrationInstance)
+        println(annonceInstance)
         annonceInstance.removeFromIllustrations(illustrationInstance)
         annonceInstance.save(flush: true)
         // Il faut effacer le fichier physique

@@ -314,7 +314,7 @@
                         <span class='required-indicator'>*</span>
                     </label><select name="author.id" required="" id="author" >
                     <g:each in="${tpbeatiniortega.User.list()}" var="user">
-                        <option value=it >${user.username}</option>
+                        <option value="${user.id}">${user.username}</option>
                     </g:each>
                     </select>
                 <fieldset class="buttons">
