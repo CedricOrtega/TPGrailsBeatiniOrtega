@@ -36,8 +36,8 @@ class ApiController {
                     return response.status = 404
                 annonceInstance = annonceInstance.save flush:true
                 response.withFormat {
-                    json { render annonceInstance as JSON}
-                    xml { render annonceInstance as XML }
+                    //json { render annonceInstance as JSON}
+                    //xml { render annonceInstance as XML }
                 }
 
                 break
@@ -50,8 +50,8 @@ class ApiController {
                     return response.status = 404
                 annonceInstance = annonceInstance.save flush:true
                 response.withFormat {
-                    json { render annonceInstance as JSON}
-                    xml { render annonceInstance as XML }
+                    //json { render annonceInstance as JSON}
+                    //xml { render annonceInstance as XML }
                 }
                 break
             case "DELETE":
@@ -95,20 +95,21 @@ class ApiController {
                         dateCreated: new Date(),
                         state: Boolean.TRUE
                 )
-                //TODO rajouter userId dans params
+
                 newAnnonce.author = User.get(1)
                 annonceService.save(newAnnonce)
 
 
                 response.withFormat {
-                    json { render newAnnonce as JSON}
-                    xml { render newAnnonce as XML }
+                    //json { render newAnnonce as JSON}
+                    //xml { render newAnnonce as XML }
                 }
                 break
             default:
                 return response.status = 405
                 break
         }
+        render(status:406,text:"Erreur : Format non accepté")
         return response.status = 406
     }
 }
